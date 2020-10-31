@@ -63,12 +63,12 @@ sub checkTimedatectlStatus {
     foreach my $currentLine ( split(/\n/, $output) ) {
         chomp($currentLine);
 
-        if ( $currentLine =~ m/synchronized: (.*)/ ) {
+        if ( $currentLine =~ m/synchronized: (.*)\b/ ) {
             $lineClockSyncFoundAndYes = TRUE if ( $1 eq 'yes' );
             next;
         }
 
-        if ( $currentLine =~ m/service: (.*)/ ) {
+        if ( $currentLine =~ m/service: (.*)\b/ ) {
             $lineSystemdServiceActiveFoundAndYes = TRUE if ( $1 eq 'active' );
             next;
         }
