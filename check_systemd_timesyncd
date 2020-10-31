@@ -68,8 +68,8 @@ sub checkTimedatectlStatus {
             next;
         }
 
-        if ( $currentLine =~ m/service active: (.*)/ ) {
-            $lineSystemdServiceActiveFoundAndYes = TRUE if ( $1 eq 'yes' );
+        if ( $currentLine =~ m/service: (.*)/ ) {
+            $lineSystemdServiceActiveFoundAndYes = TRUE if ( $1 eq 'active' );
             next;
         }
     }
