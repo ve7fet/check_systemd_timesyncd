@@ -88,7 +88,7 @@ sub checkForRootRights {
 }
 
 sub main {
-    checkForRootRights();
+#    checkForRootRights();
     checkTimedatectlStatus();
 
     print("OK - systemd thinks everything is fine\n");
