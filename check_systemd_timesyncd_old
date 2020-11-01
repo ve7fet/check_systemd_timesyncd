@@ -62,14 +62,14 @@ sub checkTimedatectlStatus {
 
     foreach my $currentLine ( split(/\n/, $output) ) {
         chomp($currentLine);
-
+	# Older versions of systemd use NTP synchronized: yes
         if ( $currentLine =~ m/synchronized: (.*)\b/ ) {
             $lineClockSyncFoundAndYes = TRUE if ( $1 eq 'yes' );
             next;
         }
-
-        if ( $currentLine =~ m/service: (.*)\b/ ) {
-            $lineSystemdServiceActiveFoundAndYes = TRUE if ( $1 eq 'active' );
+	# Older versions of systemd use the format Network time on: yes 
+        if ( $currentLine =~ m/on: (.*)\b/ ) {
+            $lineSystemdServiceActiveFoundAndYes = TRUE if ( $1 eq 'yes' );
             next;
         }
     }
